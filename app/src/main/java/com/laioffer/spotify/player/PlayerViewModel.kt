@@ -76,6 +76,12 @@ class PlayerViewModel @Inject constructor(
         Log.d("spotify", error.toString())
     }
 
+    fun seekTo(positionMs: Long) {
+        _uiState.value = uiState.value.copy(
+            currentMs = positionMs
+        )
+        exoPlayer.seekTo(positionMs)
+    }
 }
 
 data class PlayerUiState(
